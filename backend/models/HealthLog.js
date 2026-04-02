@@ -17,4 +17,4 @@ const healthLogSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model('HealthLog', healthLogSchema);
+module.exports = mongoose.model('HealthLog', healthLogSchema); 
