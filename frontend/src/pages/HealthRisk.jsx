@@ -12,7 +12,7 @@ export default function HealthRisk() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    setLoading(true); 
     try {
       const res = await api.post('/health/risk', {
         ...form,
