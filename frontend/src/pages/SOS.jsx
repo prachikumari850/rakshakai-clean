@@ -7,7 +7,6 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
-// ✅ FIX Leaflet icon (MOVE OUTSIDE COMPONENT)
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon.png',
@@ -143,13 +142,6 @@ export default function SOS() {
             <p>{locError || 'Getting location...'}</p>
           )}
         </div>
-
-        {/* SOS Button */}
-        {/* <div style={{ textAlign: 'center' }}>
-          <button onClick={handleSOS} disabled={sending}>
-            {sending ? 'Sending...' : '🆘 SOS'}
-          </button>
-        </div> */}
 
     <div style={{ textAlign: 'center', marginTop: '2rem' }}>
     <motion.button
