@@ -7,12 +7,14 @@ import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import HealthRisk from './pages/HealthRisk';
 import SOS from './pages/SOS';
-import Passport from './pages/Passport';
+import Passport from './pages/Passport';  
 import PublicPassport from './pages/PublicPassport';
 import Finder from './pages/Finder';
 import RecoveryTracker from './pages/RecoveryTracker';
 import Profile from './pages/Profile';
 import NotFound from './pages/NotFound';
+import { FitProvider } from './context/FitContext';
+import FitCallback from './pages/FitCallback';
 
 // Protected route wrapper
 const PrivateRoute = ({ children }) => {
@@ -32,6 +34,8 @@ const AppRoutes = () => {
         <Route path="/login" element={user ? <Navigate to="/dashboard" /> : <Login />} />
         <Route path="/signup" element={user ? <Navigate to="/dashboard" /> : <Signup />} />
         <Route path="/passport/:passportId" element={<PublicPassport />} />
+
+         <Route path="/fit-callback" element={<FitCallback />} /> 
         
         {/* Protected routes */}
         <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
@@ -41,6 +45,7 @@ const AppRoutes = () => {
         <Route path="/finder" element={<PrivateRoute><Finder /></PrivateRoute>} />
         <Route path="/recovery" element={<PrivateRoute><RecoveryTracker /></PrivateRoute>} />
         <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
+
         
         <Route path="*" element={<NotFound />} />
       </Routes>
@@ -51,9 +56,11 @@ const AppRoutes = () => {
 export default function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
-        <AppRoutes />
-      </BrowserRouter>
+      <FitProvider>
+        <BrowserRouter>
+          <AppRoutes />
+        </BrowserRouter>
+      </FitProvider>
     </AuthProvider>
   );
 }

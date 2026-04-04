@@ -9,6 +9,7 @@ const { Server } = require('socket.io');
 const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
+const fitRoutes = require('./routes/fitRoutes');
 
 const authRoutes = require('./routes/authRoutes');
 const healthRoutes = require('./routes/healthRoutes');
@@ -53,6 +54,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/health', healthRoutes);
 app.use('/api/passport', passportRoutes);
 app.use('/api/sos', sosRoutes);
+app.use('/api/fit-data', fitRoutes);
 
 // Health check route
 app.get('/', (req, res) => res.json({ message: '🚀 Rakshak AI Backend Running' }));

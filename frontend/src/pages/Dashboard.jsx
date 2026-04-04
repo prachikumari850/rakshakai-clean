@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
 import api from '../services/api';
+import HealthStats from '../components/HealthStats';
 
 const QuickLink = ({ to, icon, label, desc, color }) => (
   <Link to={to} style={{ textDecoration: 'none' }}>
@@ -74,6 +75,8 @@ export default function Dashboard() {
           </button>
         </Link>
       </motion.div>
+
+      <HealthStats />
 
       {/* Recent Log */}
       {recentLog && (

@@ -10,16 +10,17 @@ const userSchema = new mongoose.Schema(
     age: { type: Number },
     bloodGroup: { type: String },
     phone: { type: String },
+    googleId: { type: String },             // Google sub ID (for OAuth link)
+    googleAccessToken: { type: String },    // latest access token (short-lived)
+    fitData: {
+      steps: { type: Number, default: 0 },
+      heartRate: { type: Number, default: 0 },
+      sleepHours: { type: Number, default: 0 },
+      lastSynced: { type: Date },
   },
+}, 
   { timestamps: true }
 );
-
-// Hash password before saving
-// userSchema.pre('save', async function (next) {
-//   if (!this.isModified('password')) return next();
-//   this.password = await bcrypt.hash(this.password, 12);
-//   next();
-// });
 
 userSchema.pre('save', async function () {
   if (!this.isModified('password')) return;
