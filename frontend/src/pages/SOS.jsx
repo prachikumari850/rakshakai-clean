@@ -24,7 +24,7 @@ export default function SOS() {
   const [alerts, setAlerts] = useState([]);
   const [contact, setContact] = useState(null);
 
-  // ✅ CLEAN useEffect (ONLY ONE)
+  // CLEAN useEffect (ONLY ONE)
   useEffect(() => {
     if (!user?._id) return;
 
